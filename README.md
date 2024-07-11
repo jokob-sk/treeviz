@@ -1,31 +1,29 @@
 # Treeviz
 
 [![Known Vulnerabilities](https://snyk.io/test/github/dwyl/hapi-auth-jwt2/badge.svg?targetFile=package.json)](https://snyk.io/test/github/dwyl/hapi-auth-jwt2?targetFile=package.json)
-![David](https://img.shields.io/david/PierreCapo/treeviz)
-[![license](https://badgen.now.sh/badge/license/BSD)](./LICENSE)
+[![license](https://badgen.now.sh/badge/license/MIT)](./LICENSE)
 
 This javascript module aims at providing an easy interface in order to represent tree diagrams on screen with the ability to handle dynamic data flows. The data format must be JSON.
 
 ![](https://i.imgur.com/vyB2Erg.gif)
 
-<p align="center">
-💅 <a href="https://pierrecapo.github.io/treeviz-react">Come play with the Treeviz storybook!</a> 💅
-</p>
-
 ## Installation
 
-With npm : `npm install treeviz`
+With npm : 
 
-and then you can use it with : `import * as Treeviz from 'treeviz';`
+```Bash
+npm install treeviz
+```
 
-Or download this repository and link the dist/index.js file in your page directly : `<script src="./dist/index.js><script>`
-Also, but not recommended, you can use : `<script src="https://rawgit.com/PierreCapo/treeviz/master/dist/index.js"></script>`
+and then you can use it with : 
+
+```JavaScript
+import {Treeviz} from 'treeviz';
+```
+
+Or download this zip repository in the Github Release section and link the dist/treeviz.js file in your page directly : `<script src="./dist/index.js><script>`
 
 ## Usage
-
-#### React
-
-Check the treeviz wrapper for react: [treeviz-react](./treeviz-react)
 
 #### Vanilla JavaScript
 
@@ -110,14 +108,14 @@ The table below lists all the avalaible key that the config object can have
 | `hasZoom`                  | boolean                                       | false                   | Toggle the ability to zoom the tree                                                                                                                                                |
 | `nodeWidth`                | number                                        | 160                     | Width of a node in px                                                                                                                                                              |
 | `nodeHeight`               | number                                        | 100                     | Height of a node in px                                                                                                                                                             |
-| `linkColor`                | function                                      | (nodeData) => "#ffcc80" | Color of the link                                                                                                                                                                  |
-| `linkWidth`                | function                                      | (nodeData) => 10        | Width of the link                                                                                                                                                                  |
+| `linkColor`                | function                                      | (node: NodeData) => "#ffcc80" | Color of the link                                                                                                                                                                  |
+| `linkWidth`                | function                                      | (node: NodeData) => 10        | Width of the link                                                                                                                                                                  |
 | `linkShape`                | "quadraticBeziers" \| "orthogonal" \| "curve" | "quadraticBeziers"      | Shape of the link                                                                                                                                                                  |
-| `renderNode`               | function                                      | (nodeData) => null      | HTML template for every node                                                                                                                                                       |
+| `renderNode`               | function                                      | (node: NodeData) => null      | HTML template for every node                                                                                                                                                       |
 | `isHorizontal`             | boolean                                       | true                    | Direction of the tree. If true, the tree expands from left to right. If false, it goes from top to bottom                                                                          |
-| `onNodeClick`              | function                                      | (nodeData) => null      | Function handling the event when someone click on it                                                                                                                               |
-| `onNodeMouseEnter`         | function                                      | (nodeData) => null      | Function handling the event when someone hover a node                                                                                                                              |
-| `onNodeMouseLeave`         | function                                      | (nodeData) => null      | Function handling the event when the mouse pointer leaves a node                                                                                                                   |
+| `onNodeClick`              | function                                      | (node: NodeData) => null      | Function handling the event when someone click on it                                                                                                                               |
+| `onNodeMouseEnter`         | function                                      | (node: NodeData) => null      | Function handling the event when someone hover a node                                                                                                                              |
+| `onNodeMouseLeave`         | function                                      | (node: NodeData) => null      | Function handling the event when the mouse pointer leaves a node                                                                                                                   |
 | `mainAxisNodeSpacing`      | number or "auto"                              | 300                     | Set the distance in pixels between two depths in the tree. If the value is `auto` it will automatically display the tree to fit the size of the container.                         |
 | `secondaryAxisNodeSpacing` | number                                        | 1.25                    | Set the distance between nodes in the same level as a coefficient of node dimensions. Recommended to have the value superior to 1                                                  |
 | `marginTop`                | number                                        | 1.25                    | Set the margin between the SVG element and the tree                                                                                                                                |
@@ -125,10 +123,27 @@ The table below lists all the avalaible key that the config object can have
 | `marginLeft`               | number                                        | 1.25                    | Set the margin between the SVG element and the tree                                                                                                                                |
 | `marginRight`              | number                                        | 1.25                    | Set the margin between the SVG element and the tree                                                                                                                                |
 | `duration`              | number                                        | 600                    | The duration of the animation transition between layouts                                                                                                                                |
+| `data`              | any                                        |                     | Needed for Typescript projects only to type the `NodeData` argument                                                                                                                                |
+
+And then, we have the `NodeData` type that is passed as callback of some functions:
+`
+type NodeData {
+  data: // the data of each item
+  settings: // the settings object
+}
+`
+
+## Contributing
+
+- Clone the repo.
+- Run `npm install`.
+- Run `npm run dev`, then you can edit the files in the `./src` folder and the `./example/index.html` file.
+- To publish (admin rights), run `npm run build && npm publish`.
+
 ## Credits
 
 This module is based on d3 library, credit to all the contributors of this project.
 
 ## License
 
-BSD
+MIT
