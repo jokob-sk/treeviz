@@ -23,13 +23,28 @@ import {Treeviz} from 'treeviz';
 
 Or download this zip repository in the Github Release section and link the dist/treeviz.js file in your page directly : `<script src="./dist/index.js><script>`
 
+## Usage
+
+#### Vanilla JavaScript NEW
+
 To build .js budle
 
 ```bash
 npx esbuild src/index.ts --bundle --outfile=dist/bundle.js --platform=browser --format=iife --global-name=Treeviz --keep-names
 ```
 
-## Usage
+1. Download: 
+
+`/dist/bundle.js`
+`/dist/bundle.js.map`
+
+2. Link in your HTML 
+
+```html
+<script src="lib/treeviz/bundle.js"></script> 
+<script src="lib/treeviz/bundle.js.map"></script> 
+```
+
 
 #### Vanilla JavaScript
 
