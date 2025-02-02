@@ -8,7 +8,7 @@ type Result = ExtendedHierarchyPointNode & {
     y0: number;
 };
 export declare const getFirstDisplayedAncestor: (ghostNodes: ExtendedHierarchyPointNode[], viewableNodes: ExtendedHierarchyPointNode[], id: string) => Result;
-export declare const setNodeLocation: (xPosition: number, yPosition: number, settings: ITreeConfig) => string;
+export declare const setNodeLocation: <T>(xPosition: number, yPosition: number, settings: ITreeConfig<T>) => string;
 export declare class RefreshQueue {
     private static queue;
     private static runner;

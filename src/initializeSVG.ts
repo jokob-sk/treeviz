@@ -2,7 +2,7 @@ import d3 from "./d3";
 import { ITreeConfig } from "./typings";
 import { getAreaSize } from "./utils";
 
-export const initiliazeSVG = (treeConfig: ITreeConfig) => {
+export const initiliazeSVG = <T>(treeConfig: ITreeConfig<T>) => {
   const {
     htmlId,
     isHorizontal,
@@ -16,6 +16,7 @@ export const initiliazeSVG = (treeConfig: ITreeConfig) => {
     marginRight,
     marginTop,
   } = treeConfig;
+
   const margin = {
     top: marginTop,
     right: marginRight,
@@ -75,3 +76,4 @@ export const initiliazeSVG = (treeConfig: ITreeConfig) => {
   );
   return MainG;
 };
+

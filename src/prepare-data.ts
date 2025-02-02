@@ -3,9 +3,9 @@ import d3 from "./d3";
 import { ITreeConfig } from "./typings";
 import { getAreaSize } from "./utils";
 
-export const generateNestedData = (
+export const generateNestedData = <T>(
   data: any,
-  treeConfig: ITreeConfig
+  treeConfig: ITreeConfig<T>
 ): HierarchyNode<any> => {
   const { idKey, relationnalField, hasFlatData } = treeConfig;
   return hasFlatData
@@ -16,7 +16,7 @@ export const generateNestedData = (
     : d3.hierarchy(data, d => d[relationnalField]);
 };
 
-export const generateBasicTreemap = (treeConfig: ITreeConfig) => {
+export const generateBasicTreemap = <T>(treeConfig: ITreeConfig<T>) => {
   const { areaHeight, areaWidth } = getAreaSize(treeConfig.htmlId);
   return treeConfig.mainAxisNodeSpacing === "auto" && treeConfig.isHorizontal
     ? d3

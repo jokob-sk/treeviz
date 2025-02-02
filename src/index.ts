@@ -15,7 +15,12 @@ export const Treeviz = {
   create,
 };
 
-function create<T>(userSettings: Partial<ITreeConfig<T>>) {
+// Make sure Treeviz is available in vanilla JS
+if (typeof window !== "undefined") {
+  (window as any).Treeviz = Treeviz;
+}
+
+export function create<T>(userSettings: Partial<ITreeConfig<T>>) {
   const defaultSettings: ITreeConfig<any[]> = {
     data: [],
     htmlId: "",
@@ -108,7 +113,7 @@ function create<T>(userSettings: Partial<ITreeConfig<T>>) {
     oldNodes = [...nodes];
   }
 
-  function refresh(data: any, newSettings?: Partial<ITreeConfig>) {
+  function refresh(data: any, newSettings?: Partial<ITreeConfig<T>>) {
     RefreshQueue.add(settings.duration, () => {
       if (newSettings) {
         settings = { ...settings, ...newSettings };

@@ -2,9 +2,9 @@ import { BaseType, Selection } from "d3-selection";
 import { ExtendedHierarchyPointNode, ITreeConfig } from "../typings";
 import { getFirstDisplayedAncestor, setNodeLocation } from "../utils";
 
-export const drawNodeEnter = (
+export const drawNodeEnter = <T>(
   node: Selection<BaseType, ExtendedHierarchyPointNode, SVGGElement, {}>,
-  settings: ITreeConfig,
+  settings: ITreeConfig<T>, // Add the generic argument <T>
   nodes: ExtendedHierarchyPointNode[],
   oldNodes: ExtendedHierarchyPointNode[]
 ) => {

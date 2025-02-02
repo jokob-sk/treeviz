@@ -1,7 +1,7 @@
 import { Selection } from "d3-selection";
-import { ExtendedHierarchyPointNode, ITreeConfig } from "../typings";
+import { ExtendedHierarchyPointNode, ITreeConfig, NodeData } from "../typings";
 
-export const drawNodeUpdate = (
+export const drawNodeUpdate = <T>(
   nodeEnter: Selection<
     SVGGElement,
     ExtendedHierarchyPointNode,
@@ -9,7 +9,7 @@ export const drawNodeUpdate = (
     {}
   >,
   node: Selection<SVGGElement, ExtendedHierarchyPointNode, SVGGElement, {}>,
-  settings: ITreeConfig
+  settings:  ITreeConfig<T> 
 ) => {
   const nodeUpdate = nodeEnter.merge(node);
   nodeUpdate
@@ -28,8 +28,8 @@ export const drawNodeUpdate = (
     .attr("width", settings.nodeWidth)
     .attr("height", settings.nodeHeight)
     .style("overflow", "visible")
-    .on("click", (_, d) => settings.onNodeClick({ ...d, settings }))
-    .on("mouseenter", (_, d) => settings.onNodeMouseEnter({ ...d, settings }))
-    .on("mouseleave", (_, d) => settings.onNodeMouseLeave({ ...d, settings }))
-    .html((d) => settings.renderNode({ ...d, settings }));
+    .on("click", (_, d) => settings.onNodeClick({ ...d, settings } as NodeData<T>))
+    .on("mouseenter", (_, d) => settings.onNodeMouseEnter({ ...d, settings } as NodeData<T>))
+    .on("mouseleave", (_, d) => settings.onNodeMouseLeave({ ...d, settings } as NodeData<T>))
+    .html((d) => settings.renderNode({ ...d, settings } as NodeData<T>));
 };

@@ -2,8 +2,8 @@ import { ITreeConfig } from "./typings";
 export declare const Treeviz: {
     create: typeof create;
 };
-declare function create(userSettings: Partial<ITreeConfig>): {
-    refresh: (data: any, newSettings?: Partial<ITreeConfig>) => void;
+declare function create<T>(userSettings: Partial<ITreeConfig<T>>): {
+    refresh: (data: any, newSettings?: Partial<ITreeConfig<T>>) => void;
     clean: (keepConfig: boolean) => void;
 };
 export {};

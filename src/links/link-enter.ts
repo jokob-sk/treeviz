@@ -4,9 +4,9 @@ import { ExtendedHierarchyPointNode, ITreeConfig } from "../typings";
 import { getFirstDisplayedAncestor } from "../utils";
 import { generateLinkLayout } from "./draw-links";
 
-export const drawLinkEnter = (
+export const drawLinkEnter = <T>(
   link: Selection<BaseType, HierarchyPointNode<{}>, SVGGElement, {}>,
-  settings: ITreeConfig,
+  settings: ITreeConfig<T>,
   nodes: ExtendedHierarchyPointNode[],
   oldNodes: ExtendedHierarchyPointNode[]
 ) =>
@@ -27,9 +27,9 @@ export const drawLinkEnter = (
       return generateLinkLayout(o, o, settings);
     })
     .attr("fill", "none")
-    .attr("stroke-width", ({ data }: { data: any }) =>
-      settings.linkWidth({ data, settings })
+    .attr("stroke-width", (d: any) => 
+      settings.linkWidth(d) // Pass the correct `d` object to linkWidth
     )
-    .attr("stroke", ({ data }: { data: any }) =>
-      settings.linkColor({ data, settings })
+    .attr("stroke", (d: any) => 
+      settings.linkColor(d) // Pass the correct `d` object to linkColor
     );

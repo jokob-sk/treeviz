@@ -4,9 +4,9 @@ import { ExtendedHierarchyPointNode, ITreeConfig } from "../typings";
 import { getFirstDisplayedAncestor } from "../utils";
 import { generateLinkLayout } from "./draw-links";
 
-export const drawLinkExit = (
+export const drawLinkExit = <T>(
   link: Selection<BaseType, HierarchyPointNode<{}>, SVGGElement, {}>,
-  settings: ITreeConfig,
+  settings: ITreeConfig<T>, // Specify the generic argument <T>
   nodes: ExtendedHierarchyPointNode[],
   oldNodes: ExtendedHierarchyPointNode[]
 ) => {

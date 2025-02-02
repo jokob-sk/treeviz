@@ -43,10 +43,10 @@ export const getFirstDisplayedAncestor = (
   }
 };
 
-export const setNodeLocation = (
+export const setNodeLocation = <T>(
   xPosition: number,
   yPosition: number,
-  settings: ITreeConfig
+  settings: ITreeConfig<T>
 ) => {
   if (settings.isHorizontal) {
     return "translate(" + yPosition + "," + xPosition + ")";

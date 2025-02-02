@@ -1,6 +1,6 @@
 import { HierarchyPointNode } from "d3-hierarchy";
 
-type NodeData<T> = {
+export type NodeData<T> = {
   data: T;
   settings: ITreeConfig<T>;
 } & ExtendedHierarchyPointNode;

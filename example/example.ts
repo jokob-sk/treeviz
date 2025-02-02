@@ -189,9 +189,9 @@ var myTree = Treeviz.create({
 myTree.refresh(data_1);
 
 var toggle = true;
-var addButton = document.querySelector("#add");
-var removeButton = document.querySelector("#remove");
-var doTasksButton = document.querySelector("#doTasks");
+const addButton = document.querySelector("#add") as HTMLButtonElement | null;
+const removeButton = document.querySelector("#remove") as HTMLButtonElement | null;
+const doTasksButton = document.querySelector("#doTasks") as HTMLButtonElement | null;
 addButton?.addEventListener("click", function () {
   console.log("addButton clicked");
   toggle ? myTree.refresh(data_2) : myTree.refresh(data_3);

@@ -5,10 +5,10 @@ interface ICoordinates {
   y: number;
 }
 
-export const generateLinkLayout = (
+export const generateLinkLayout = <T>(
   s: ICoordinates, // source
   d: ICoordinates, // destination
-  treeConfig: ITreeConfig
+  treeConfig: ITreeConfig<T> // Add generic type T
 ): string => {
   const { isHorizontal, nodeHeight, nodeWidth, linkShape } = treeConfig;
   if (linkShape === "orthogonal") {
